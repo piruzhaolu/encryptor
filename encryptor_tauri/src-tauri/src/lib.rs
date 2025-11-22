@@ -1,6 +1,4 @@
 use std::cmp::min;
-use std::fs;
-use std::path::Path;
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 use base64::Engine;
 use aes_gcm::aead::{Aead, OsRng};
@@ -77,7 +75,7 @@ pub fn run() {
 
 /// key 密码
 /// text 要加密的文本
-fn encrypt(key: &str, text: &str) -> String {
+pub fn encrypt(key: &str, text: &str) -> String {
     let key: &[u8; 32] = &u8_to_u832(key);
     let key: &Key<Aes256Gcm> = key.into();
 

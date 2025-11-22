@@ -16,6 +16,7 @@ function App() {
     const [pwkeys, setPwkeys] = useState([""]);
     const [platform, setPlatform] = useState<string | null>(null);
     const [pw, setPw] = useState<string>("");
+    const [buttonText, setButtonText] = useState("Decode");
     const [open, setOpen] = useState(false);
     const editableRef = useRef();
     // async function greet() {
@@ -47,6 +48,16 @@ function App() {
     });
 
     async function decode() {
+        // if (platform === null || platform == "") {
+        //     if (pw === "" || pw === null) {
+        //         setButtonText("SetToml");
+        //     } else {
+        //         setButtonText("Encode");
+        //     }
+        // } else {
+        //     setButtonText("Decode");
+        // }
+        
         if (platform === null || platform == "") {
             handleClickOpen();
             return;
@@ -101,6 +112,19 @@ function App() {
         }
         setOpen(false);
     }
+
+
+    useEffect(() => {
+        if (platform === null || platform == "") {
+            if (pw === "" || pw === null) {
+                setButtonText("SetToml");
+            } else {
+                setButtonText("Encode");
+            }
+        } else {
+            setButtonText("Decode");
+        }
+    }, [platform,pw]); // 当 count 更新时触发
     
 
 
@@ -127,9 +151,11 @@ function App() {
                 label="Password"
                 type="password"
                 value={pw || ""}
-                onChange={(e) => setPw(e.currentTarget.value)}
+                onChange={(e) => {
+                    setPw(e.currentTarget.value);
+                }}
             />
-            <Button variant="contained" onClick={decode}>Decode</Button>
+            <Button variant="contained" onClick={decode}>{buttonText}</Button>
 
             <BootstrapDialog
                 onClose={handleClose}

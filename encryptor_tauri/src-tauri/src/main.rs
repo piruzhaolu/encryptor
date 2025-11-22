@@ -4,3 +4,20 @@
 fn main() {
     encryptor_tauri_lib::run()
 }
+
+
+
+
+// 测试模块
+#[cfg(test)]
+mod tests {
+
+    #[test]
+    fn test_encrypt() {
+        let text = "";
+        let password = "";
+        let encrypted = encryptor_tauri_lib::encrypt(text, password);
+        println!("Encrypted: {}", encrypted);
+        
+    }
+}

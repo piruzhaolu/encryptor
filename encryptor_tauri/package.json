@@ -8,7 +8,9 @@
     "build": "tsc && vite build",
     "tauri_build": "tauri build",
     "preview": "vite preview",
-    "tauri": "tauri dev"
+    "tauri": "tauri dev",
+    "tauri_android_dev": "tauri android dev",
+    "tauri_android_build": "tauri android build"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
